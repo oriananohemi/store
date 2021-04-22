@@ -20,7 +20,7 @@ const Main = () => {
 
     return(
       <>
-      <h1>Descubre</h1>
+      <h1 className="title">Descubre</h1>
       <section className="section">
           <div className="section__title-container">
             <h2>Nuevo en SuperFüds</h2>
@@ -29,13 +29,20 @@ const Main = () => {
         <Carousel
             plugins={[
                 'infinite',
-                'arrows',
                 {
                     resolve: slidesToShowPlugin,
                     options: {
                         numberOfSlides: 4
                     }
                 },
+                {
+                    resolve: arrowsPlugin,
+                    options: {
+                        arrowLeft: <button className="carousel__button fa-lg"><FontAwesomeIcon icon="chevron-left" /></button>,
+                        arrowRight: <button className="carousel__button fa-lg"><FontAwesomeIcon icon="chevron-right" /></button>,
+                        addArrowClickHandler: true,
+                  }
+                }
             ]}
             >
             {
@@ -43,7 +50,8 @@ const Main = () => {
                     <Card 
                         key={product.id}
                         {...product}
-                    />)
+                    />
+                )
             }
             </Carousel>
       </section>
