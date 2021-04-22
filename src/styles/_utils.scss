@@ -1,0 +1,27 @@
+.input {
+  border-radius: 10px;
+  border: none;
+  padding: 5px 10px;
+  width: 100%;
+  &-icon {
+    position: absolute;
+    right: 5px;
+    font-size: 12px;
+  }
+  &-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+}
+
+.responsive-image {
+  max-width: 100%;
+}
+
+.flex-container {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+}
