@@ -1,0 +1,24 @@
+.header {
+    align-items: center;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    padding: 5px 15px;
+      &__brand {
+        width: 200px;
+      }
+      &__shoppingCart {
+        color: var(--white-color);
+      }
+      &__profile {
+        color: var(--white-color);
+        font-size: 20px;
+      }
+      &__profile-image {
+        width: 50px;
+      }
+  }
+
+
+
