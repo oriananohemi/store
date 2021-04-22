@@ -1,0 +1,55 @@
+.card {
+    box-shadow: 2px 1px 23px -8px var(--shadow-color);
+    border: 1px solid var(--shadow-color);
+    height: 350px;
+    margin: 5px;
+    width: 90%;
+    &__upper-session {
+        align-items: flex-start;
+        border-bottom: 1px solid var(--shadow-color);
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+    }
+    &__image {
+        height: 230px;
+        width: 200px;
+    }
+    &__details-container {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.card__seal-image {
+    display: block;
+    margin: 10px;
+}
+
+.card__title {
+    font-size: 16px;
+    margin: 10px 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+// .card__title:hover {
+//     text-overflow: initial;
+//     overflow: visible;
+//     white-space: normal;
+// }
+
+.card__option {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    transition: color 0.8s linear 0.2s;
+    margin-top: auto;
+    padding: 5px 0;
+    opacity: 0;
+}
+
+.card:hover .card__option {
+    opacity: 1;
+}
