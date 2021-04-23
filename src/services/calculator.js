@@ -19,7 +19,7 @@ export const editCart = (product, action) => {
 
                     return copieCart.concat({...product, quantity: item.quantity -1})
                 }
-                case "removeProduct": {
+                case "removeItem": {
                     return copieCart   
                 }
                 case "increment": {
