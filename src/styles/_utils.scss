@@ -16,6 +16,29 @@
   }
 }
 
+.button--green {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.button--green:hover {
+  background-color: var(--white-color);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.button--red {
+  background-color: var(--red-color);
+  color: var(--white-color);
+}
+
+.button--red:hover {
+  background-color: var(--white-color);
+  border: 1px solid var(--red-color);
+  color: var(--red-color);
+}
+
+
 .responsive-image {
   max-width: 100%;
 }
