@@ -5,7 +5,7 @@ const Footer = () => {
     return(
         <footer className="footer">
             <img className="footer__brand" src={logo} alt="Logo Superfüds"/>
-            <a className="footer__copy" href="https://github.com/oriananohemi" target="_blank">oriananohemi para SuperFüds</a>
+            <a className="footer__copy" href="https://github.com/oriananohemi" rel="noopener noreferrer" target="_blank">oriananohemi para SuperFüds</a>
         </footer>
     )
 }

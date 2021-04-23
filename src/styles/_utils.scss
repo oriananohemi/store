@@ -18,7 +18,11 @@
 
 .button--green {
   background-color: var(--primary-color);
+  border: none;
   color: var(--white-color);
+  padding: 5px;
+  margin: 10px;
+  width: 80px;
 }
 
 .button--green:hover {
@@ -29,7 +33,11 @@
 
 .button--red {
   background-color: var(--red-color);
+  border: none;
   color: var(--white-color);
+  padding: 5px;
+  margin: 10px;
+  width: 80px;
 }
 
 .button--red:hover {
@@ -51,6 +59,9 @@
 
 @media(min-width:1200px) {
   .input {
-    width: 500px;
+    width: 700px;
+    &-icon {
+      right: 60px;
+    }
   }
 }

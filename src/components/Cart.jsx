@@ -7,7 +7,7 @@ import Item from './Item'
 
 const Cart = ({products, decrement, increment}) => {
     return(
-        <section>
+        <section className="cart">
             <div className="cart__goBack">
                 <button className="carousel__button fa-lg"><FontAwesomeIcon icon="chevron-left" /></button>
                 <h2>Volver a la tienda</h2>
@@ -26,7 +26,7 @@ const Cart = ({products, decrement, increment}) => {
                     )
                 }
             </div>
-            <div>
+            <div className="flex-container">
                 <button className="button--red">Eliminar</button>
                 <button className="button--green">Confirmar</button>
             </div>

@@ -63,6 +63,7 @@
     .header {
       grid-template-areas: "header__brand header-subcontainer";
       padding: 5px 15px;
+      justify-content: initial;
         &__brand {
           width: 200px;
         }
@@ -72,10 +73,11 @@
     }
 
     .header-subcontainer {
-      justify-content: space-between;
+      justify-content: initial;
       grid-row-gap: 0;
       grid-template-rows: none;
       grid-template-columns: repeat(3, auto);
+      position: static;
     }
   }
 

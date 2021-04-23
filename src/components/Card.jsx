@@ -11,7 +11,7 @@ const Card = ({title, image, sellos, price_real, net_content, units_sf, supplier
                     {
                         sellos.map((seal) => 
                             <div key={seal.name}>
-                                <img data-for='soclose' className="card__seal-image" src={seal.image} data-tip={seal.name} />
+                                <img data-for='soclose' className="card__seal-image" src={seal.image} data-tip={seal.name} alt={seal.name} />
                                 <ReactTooltip 
                                     id='soclose' 
                                     place="right" 
