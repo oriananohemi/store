@@ -46,10 +46,6 @@ const Main = () => {
       }
     }
 
-    const total = () => items.reduce((buy, item) => buy + item.price * item.quantity, 0)
-
-    const quantity = () => items.reduce((cart, item) => cart + item.quantity, 0)
-
     return(
       <>
       <h1 className="title">¡Descubre lo que tenemos para ti!</h1>
