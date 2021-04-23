@@ -3,10 +3,13 @@
     display: flex;
     justify-content: space-between;
     &__image {
-        width: 100px;
+        width: 50px;
     }
     &__title {
-        font-size: 14px;
+        font-size: 10px;
+        text-overflow: ellipsis;
+        white-space: pre-wrap;
+        overflow: hidden;
     }
     &__small {
         font-size: 10px;
@@ -27,7 +30,7 @@
         background-color: transparent;
         cursor: pointer;
         color: var(--primary-color);
-        padding: 5px;
+        padding: 2px;
         margin: 0 5px;
     }
 }

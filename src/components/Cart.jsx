@@ -12,36 +12,29 @@ const Cart = ({products, decrement, increment, removeItem, clear}) => {
 
     return(
         <section className="cart">
-            <div className="cart__goBack">
-                <button className="carousel__button fa-lg"><FontAwesomeIcon icon="chevron-left" /></button>
-                <h2>Volver a la tienda</h2>
-            </div>
             <div className="cart--flex-container">
                 <h1 className="title">Carrito de compras</h1>
                 <p><span className="details--color"></span>{quantity} items</p>
             </div>
             <div>
                 {
-                    products.lenght > 0 ?
-                        products.map((item) => 
-                            <Item 
-                                key={item.id}
-                                {...item}
-                                decrement={(element) => decrement(element, 'decrement')}
-                                increment={(element) => increment(element, 'increment')}
-                                removeItem={(element) => removeItem(element, 'removeItem')}
-                            />
-                        )
-                    :   
-                        <h2 className="message">Agrega tus productos</h2>
+                    products.map((item) => 
+                        <Item 
+                            key={item.id}
+                            {...item}
+                            decrement={(element) => decrement(element, 'decrement')}
+                            increment={(element) => increment(element, 'increment')}
+                            removeItem={(element) => removeItem(element, 'removeItem')}
+                        />
+                    )
                 }
             </div>
-            <div>
+            <div className="section-container">
                 <h2>Total: {total}</h2>
-            </div>
-            <div className="flex-container">
-                <button className="button--red" onClick={clear}>Vaciar Carrito</button>
-                <button className="button--green">Confirmar Compra</button>
+                <div className="flex-container">
+                    <button className="button--red" onClick={clear}>Vaciar Carrito</button>
+                    <button className="button--green">Confirmar Compra</button>
+                </div>
             </div>
         </section>
     )

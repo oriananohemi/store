@@ -5,7 +5,7 @@
 
 .section {
     margin: 30px auto;
-    width: 90%;
+    width: 70%;
 
     &__title-container {
         align-items: center;
@@ -36,4 +36,13 @@
     background-color: var(--primary-color);
     border-radius: 50%;
     color: var(--white-color);
+}
+
+@media(min-width: 700px) {
+    .main-container {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
 }

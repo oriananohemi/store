@@ -15,7 +15,6 @@ import Card from './Card';
 const Main = () => {
     const [ products, setProducts ] =  useState([])
     const [ items, setItems ] = useState([])
-    const [ cartOpen, toggleCart ] = useState(false)
 
     const plugins = [
         {
@@ -49,7 +48,7 @@ const Main = () => {
     return(
       <>
       <h1 className="title">¡Descubre lo que tenemos para ti!</h1>
-      <div className="flex-container">
+      <div className="main-container">
         <section className="section">
             <div className="section__title-container">
               <h2>Nuevo en SuperFüds</h2>
@@ -73,7 +72,7 @@ const Main = () => {
                     plugins: [{...plugins[0], options: {...plugins[0].options, numberOfSlides: 4}}, plugins[1]]
                   },
                   1900: {
-                    plugins: [{...plugins[0], options: {...plugins[0].options, numberOfSlides: 5}}, plugins[1]]
+                    plugins: [{...plugins[0], options: {...plugins[0].options, numberOfSlides: 4}}, plugins[1]]
                   },
                 }}
               >

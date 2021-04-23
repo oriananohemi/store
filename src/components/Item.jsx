@@ -12,9 +12,9 @@ const Item = ({id, title, image, sellos, price_real, net_content, units_sf, supp
                 <h3 className="item__color item__small">{supplier}</h3>
             </div>
             <div>
-                <button className="item__button-burble fa-lg" onClick={() => decrement({id, title, image, sellos, price_real, net_content, units_sf, supplier, quantity})}><FontAwesomeIcon icon="minus" /></button>
+                <button className="item__button-burble" onClick={() => decrement({id, title, image, sellos, price_real, net_content, units_sf, supplier, quantity})}><FontAwesomeIcon icon="minus" /></button>
                 <span>{quantity}</span>
-                <button className="item__button-burble fa-lg" onClick={() => increment({id, title, image, sellos, price_real, net_content, units_sf, supplier, quantity})}><FontAwesomeIcon icon="plus" /></button>
+                <button className="item__button-burble" onClick={() => increment({id, title, image, sellos, price_real, net_content, units_sf, supplier, quantity})}><FontAwesomeIcon icon="plus" /></button>
             </div>
             <p><b className="item__color">$ </b>{price_real * quantity}</p>
             <button className="item__button fa-lg" onClick={() => removeItem({id, title, image, sellos, price_real, net_content, units_sf, supplier, quantity })}><FontAwesomeIcon icon="trash-alt" /></button>
