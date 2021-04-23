@@ -43,47 +43,49 @@ const Main = () => {
 
     return(
       <>
-      <h1 className="title">Descubre</h1>
-      <section className="section">
-          <div className="section__title-container">
-            <h2>Nuevo en SuperFüds</h2>
-            <a href="">Ver más</a>
-          </div>
-          {
-            products.length > 0 ? 
-            <Carousel
-            plugins={['infinite', ...plugins]}
-            breakpoints={{
-                640: {
-                  plugins: [{...plugins[0], options: {...plugins[0].options, numberOfSlides: 1}}, plugins[1]]
-                },
-                900: {
-                  plugins: [{...plugins[0], options: {...plugins[0].options, numberOfSlides: 2}}, plugins[1]]
-                },
-                1200: {
-                    plugins: [{...plugins[0], options: {...plugins[0].options, numberOfSlides: 3}}, plugins[1]]
-                  }
-              }}
-            >
+      <h1 className="title">¡Descubre lo que tenemos para ti!</h1>
+      <div className="flex-container">
+        <section className="section">
+            <div className="section__title-container">
+              <h2>Nuevo en SuperFüds</h2>
+              <a>Ver más</a>
+            </div>
             {
-                products.map((product) => 
-                    <Card 
-                        key={product.id}
-                        {...product}
-                        add={(element) => cartManager(element, "increment")}
-                    />
-                )
+              products.length > 0 ? 
+              <Carousel
+              plugins={['infinite', ...plugins]}
+              breakpoints={{
+                  640: {
+                    plugins: [{...plugins[0], options: {...plugins[0].options, numberOfSlides: 1}}, plugins[1]]
+                  },
+                  900: {
+                    plugins: [{...plugins[0], options: {...plugins[0].options, numberOfSlides: 2}}, plugins[1]]
+                  },
+                  1200: {
+                      plugins: [{...plugins[0], options: {...plugins[0].options, numberOfSlides: 3}}, plugins[1]]
+                    }
+                }}
+              >
+              {
+                  products.map((product) => 
+                      <Card 
+                          key={product.id}
+                          {...product}
+                          add={(element) => cartManager(element, "increment")}
+                      />
+                  )
+              }
+              </Carousel>
+              :
+              <Loading/>
             }
-            </Carousel>
-            :
-            <Loading/>
-          }
-      </section>
-      <Cart
-        products={items}
-        decrement={(element) => editCart(element, "decrement")}
-        increment={(element) => editCart(element, "increment")}
-      />
+        </section>
+        <Cart
+          products={items}
+          decrement={(element) => editCart(element, "decrement")}
+          increment={(element) => editCart(element, "increment")}
+        />
+      </div>
       </>
     )
 }
