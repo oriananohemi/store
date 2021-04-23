@@ -13,36 +13,41 @@ import Card from './Card';
 import Loading from './Loading';
 
 const Main = () => {
+    const defineNumberSlides = (screen) => {
+        if (screen < 600) {
+            return 1
+        } else if (900 > screen && screen > 600) {
+            return 2
+        } else if (1200 > screen && screen > 900) {
+            return 3
+        } else if (screen > 1200) {
+            return 5
+        }
+    }
+
     const [ products, setProducts ] =  useState([])
     const [ items, setItems ] = useState([])
-    const [ windowResizing, setWindowResizing ] = useState(1)
-
-
-    const cartManager = (product, action) => {
-        setItems(editCart(product, action))
-    }
+    const [ numberSlides, setNumberSlides ] = useState(defineNumberSlides(window.innerWidth))
 
     useEffect(() => {
         getProducts().then(product => setProducts(product))
-
-
+        
+        
         const handleResize = (e) => {
             let timeout
             clearTimeout(timeout)
-
+            
             timeout = setTimeout(() => {
                 const screen = e.target.outerWidth
-                if (900 > screen && screen > 600) {
-                    setWindowResizing(2)
-                } else if (1200 > screen && screen > 900) {
-                    setWindowResizing(3)
-                } else if (screen > 1200) {
-                    setWindowResizing(5)
-                }
-            }, 50)
+                setNumberSlides(defineNumberSlides(screen))
+            }, 100)
         }
         window.addEventListener("resize", handleResize)
-      }, [])
+    }, [])
+    
+    const cartManager = (product, action) => {
+        setItems(editCart(product, action))
+    }
 
     return(
       <>
@@ -60,7 +65,7 @@ const Main = () => {
                 {
                     resolve: slidesToShowPlugin,
                     options: {
-                        numberOfSlides: windowResizing
+                        numberOfSlides: numberSlides
                     }
                 },
                 {
