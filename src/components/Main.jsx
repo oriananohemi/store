@@ -13,36 +13,28 @@ import Card from './Card';
 import Loading from './Loading';
 
 const Main = () => {
-    const defineNumberSlides = (screen) => {
-        if (screen < 600) {
-            return 1
-        } else if (900 > screen && screen > 600) {
-            return 2
-        } else if (1200 > screen && screen > 900) {
-            return 3
-        } else if (screen > 1200) {
-            return 5
-        }
-    }
-
     const [ products, setProducts ] =  useState([])
     const [ items, setItems ] = useState([])
-    const [ numberSlides, setNumberSlides ] = useState(defineNumberSlides(window.innerWidth))
+
+    const plugins = [
+        {
+            resolve: slidesToShowPlugin,
+            options: {
+                numberOfSlides: 4
+            }
+        },
+        {
+            resolve: arrowsPlugin,
+            options: {
+                arrowLeft: <button className="carousel__button fa-lg"><FontAwesomeIcon icon="chevron-left" /></button>,
+                arrowRight: <button className="carousel__button fa-lg"><FontAwesomeIcon icon="chevron-right" /></button>,
+                addArrowClickHandler: true,
+            }
+        }
+    ]
 
     useEffect(() => {
         getProducts().then(product => setProducts(product))
-        
-        
-        const handleResize = (e) => {
-            let timeout
-            clearTimeout(timeout)
-            
-            timeout = setTimeout(() => {
-                const screen = e.target.outerWidth
-                setNumberSlides(defineNumberSlides(screen))
-            }, 100)
-        }
-        window.addEventListener("resize", handleResize)
     }, [])
     
     const cartManager = (product, action) => {
@@ -60,23 +52,18 @@ const Main = () => {
           {
             products.length > 0 ? 
             <Carousel
-            plugins={[
-                'infinite',
-                {
-                    resolve: slidesToShowPlugin,
-                    options: {
-                        numberOfSlides: numberSlides
-                    }
+            plugins={['infinite', ...plugins]}
+            breakpoints={{
+                640: {
+                  plugins: [{...plugins[0], options: {...plugins[0].options, numberOfSlides: 1}}, plugins[1]]
                 },
-                {
-                    resolve: arrowsPlugin,
-                    options: {
-                        arrowLeft: <button className="carousel__button fa-lg"><FontAwesomeIcon icon="chevron-left" /></button>,
-                        arrowRight: <button className="carousel__button fa-lg"><FontAwesomeIcon icon="chevron-right" /></button>,
-                        addArrowClickHandler: true,
-                }
-                }
-            ]}
+                900: {
+                  plugins: [{...plugins[0], options: {...plugins[0].options, numberOfSlides: 2}}, plugins[1]]
+                },
+                1200: {
+                    plugins: [{...plugins[0], options: {...plugins[0].options, numberOfSlides: 3}}, plugins[1]]
+                  }
+              }}
             >
             {
                 products.map((product) => 
