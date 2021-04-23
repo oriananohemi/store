@@ -31,6 +31,6 @@ Prueba tecnica frontend. Desarrollada en React con [Create React App](https://gi
 
 ## Demo del proyecto
 
-    Puede interactuar con la aplicacion en la url
+    Puede interactuar con la aplicacion en la url https://oriananohemi.github.io/store/
 
 ## Demo 
