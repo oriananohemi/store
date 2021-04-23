@@ -15,6 +15,7 @@ import Loading from './Loading';
 const Main = () => {
     const [ products, setProducts ] =  useState([])
     const [ items, setItems ] = useState([])
+    const [ windowResizing, setWindowResizing ] = useState(1)
 
 
     const cartManager = (product, action) => {
@@ -23,6 +24,24 @@ const Main = () => {
 
     useEffect(() => {
         getProducts().then(product => setProducts(product))
+
+
+        const handleResize = (e) => {
+            let timeout
+            clearTimeout(timeout)
+
+            timeout = setTimeout(() => {
+                const screen = e.target.outerWidth
+                if (900 > screen && screen > 600) {
+                    setWindowResizing(2)
+                } else if (1200 > screen && screen > 900) {
+                    setWindowResizing(3)
+                } else if (screen > 1200) {
+                    setWindowResizing(5)
+                }
+            }, 50)
+        }
+        window.addEventListener("resize", handleResize)
       }, [])
 
     return(
@@ -41,7 +60,7 @@ const Main = () => {
                 {
                     resolve: slidesToShowPlugin,
                     options: {
-                        numberOfSlides: 4
+                        numberOfSlides: windowResizing
                     }
                 },
                 {
