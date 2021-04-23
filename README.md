@@ -1,4 +1,4 @@
-# E-commerce
+# Store
 
 Prueba tecnica frontend. Desarrollada en React con [Create React App](https://github.com/facebook/create-react-app), con el preprocesador SCSS.
 
