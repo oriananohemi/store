@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ReactLoading from 'react-loading';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Carousel, { slidesToShowPlugin, arrowsPlugin } from '@brainhubeu/react-carousel';
@@ -10,11 +11,11 @@ import { editCart } from '../services/calculator';
 
 import Cart from './Cart';
 import Card from './Card';
-import Loading from './Loading';
 
 const Main = () => {
     const [ products, setProducts ] =  useState([])
     const [ items, setItems ] = useState([])
+    const [ cartOpen, toggleCart ] = useState(false)
 
     const plugins = [
         {
@@ -38,13 +39,21 @@ const Main = () => {
     }, [])
     
     const cartManager = (product, action) => {
+      if (action === 'clear') {
+        setItems([])
+      } else {
         setItems(editCart(product, action))
+      }
     }
+
+    const total = () => items.reduce((buy, item) => buy + item.price * item.quantity, 0)
+
+    const quantity = () => items.reduce((cart, item) => cart + item.quantity, 0)
 
     return(
       <>
       <h1 className="title">¡Descubre lo que tenemos para ti!</h1>
-      <div className="flex-container">
+      <div>
         <section className="section">
             <div className="section__title-container">
               <h2>Nuevo en SuperFüds</h2>
@@ -63,7 +72,13 @@ const Main = () => {
                   },
                   1200: {
                       plugins: [{...plugins[0], options: {...plugins[0].options, numberOfSlides: 3}}, plugins[1]]
-                    }
+                  },
+                  1440: {
+                    plugins: [{...plugins[0], options: {...plugins[0].options, numberOfSlides: 4}}, plugins[1]]
+                  },
+                  1900: {
+                    plugins: [{...plugins[0], options: {...plugins[0].options, numberOfSlides: 5}}, plugins[1]]
+                  },
                 }}
               >
               {
@@ -77,13 +92,15 @@ const Main = () => {
               }
               </Carousel>
               :
-              <Loading/>
+              <ReactLoading type="Spin" color="#24c36c" height={667} width={375} />
             }
         </section>
         <Cart
           products={items}
-          decrement={(element) => editCart(element, "decrement")}
-          increment={(element) => editCart(element, "increment")}
+          decrement={(element) => cartManager(element, "decrement")}
+          increment={(element) => cartManager(element, "increment")}
+          removeItem={(element) => cartManager(element, "removeItem")}
+          clear={(element) => cartManager(element, "clear")}
         />
       </div>
       </>

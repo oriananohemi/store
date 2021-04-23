@@ -1,12 +1,12 @@
 export const editCart = (product, action) => {
     return (currentCart) => {
         const newProduct = currentCart.find((element) => element.id === product.id)
-
-        if(!newProduct) {
+        
+        if(!newProduct && action === 'increment') {
             return currentCart.concat({...product, quantity: 1})
         }
 
-        currentCart.reduce((copieCart, item) => {
+        return currentCart.reduce((copieCart, item) => {
             if(product.id !== item.id) {
                 return copieCart.concat(item)
             }
@@ -24,9 +24,6 @@ export const editCart = (product, action) => {
                 }
                 case "increment": {
                     return copieCart.concat({...product, quantity: item.quantity + 1})
-                }
-                case "finalized": {
-                    return {}
                 }
                 default: {
                     return copieCart.concat(item)

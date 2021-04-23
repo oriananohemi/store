@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Item from './Item'
 
-const Cart = ({products, decrement, increment}) => {
+const Cart = ({products, decrement, increment, removeItem, clear}) => {
     return(
         <section className="cart">
             <div className="cart__goBack">
@@ -22,12 +22,15 @@ const Cart = ({products, decrement, increment}) => {
                         <Item 
                             key={item.id}
                             {...item}
+                            decrement={(element) => decrement(element, 'decrement')}
+                            increment={(element) => increment(element, 'increment')}
+                            removeItem={(element) => removeItem(element, 'removeItem')}
                         />
                     )
                 }
             </div>
             <div className="flex-container">
-                <button className="button--red">Eliminar</button>
+                <button className="button--red" onClick={clear}>Vaciar Carrito</button>
                 <button className="button--green">Confirmar</button>
             </div>
         </section>
