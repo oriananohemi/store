@@ -1,6 +1,4 @@
-<img src="./src/assets/images/brand-green.png">
-
-# E-commerce SuperFüds
+# E-commerce
 
 Prueba tecnica frontend. Desarrollada en React con [Create React App](https://github.com/facebook/create-react-app), con el preprocesador SCSS.
 
@@ -28,7 +26,3 @@ Prueba tecnica frontend. Desarrollada en React con [Create React App](https://gi
     $ npm start
 
     Se abrira el proyecto en [http://localhost:3000](http://localhost:3000) 
-
-## Demo del proyecto
-
-    Puede interactuar con la aplicacion en la url https://oriananohemi.github.io/store/
