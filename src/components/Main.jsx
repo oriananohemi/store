@@ -5,14 +5,21 @@ import Carousel, { slidesToShowPlugin, arrowsPlugin } from '@brainhubeu/react-ca
 import '@brainhubeu/react-carousel/lib/style.css';
 
 import { getProducts } from '../services/getProducts';
+import { editCart } from '../services/calculator';
+
 
 import Cart from './Cart';
 import Card from './Card';
-
+import Loading from './Loading';
 
 const Main = () => {
     const [ products, setProducts ] =  useState([])
+    const [ items, setItems ] = useState([])
 
+
+    const cartManager = (product, action) => {
+        setItems(editCart(product, action))
+    }
 
     useEffect(() => {
         getProducts().then(product => setProducts(product))
@@ -26,7 +33,9 @@ const Main = () => {
             <h2>Nuevo en SuperFüds</h2>
             <a href="">Ver más</a>
           </div>
-        <Carousel
+          {
+            products.length > 0 ? 
+            <Carousel
             plugins={[
                 'infinite',
                 {
@@ -41,7 +50,7 @@ const Main = () => {
                         arrowLeft: <button className="carousel__button fa-lg"><FontAwesomeIcon icon="chevron-left" /></button>,
                         arrowRight: <button className="carousel__button fa-lg"><FontAwesomeIcon icon="chevron-right" /></button>,
                         addArrowClickHandler: true,
-                  }
+                }
                 }
             ]}
             >
@@ -50,12 +59,20 @@ const Main = () => {
                     <Card 
                         key={product.id}
                         {...product}
+                        add={(element) => cartManager(element, "increment")}
                     />
                 )
             }
             </Carousel>
+            :
+            <Loading/>
+          }
       </section>
-      <Cart/>
+      <Cart
+        products={items}
+        decrement={(element) => editCart(element, "decrement")}
+        increment={(element) => editCart(element, "increment")}
+      />
       </>
     )
 }

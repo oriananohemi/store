@@ -1,6 +1,8 @@
 import React from 'react';
 
-const Card = ({title, image, sellos, price_real, net_content, units_sf}) => {
+import ReactTooltip from 'react-tooltip';
+
+const Card = ({title, image, sellos, price_real, net_content, units_sf}, add) => {
     return(
         <article className="card responsive-image">
             <div className="card__upper-session">
@@ -8,7 +10,17 @@ const Card = ({title, image, sellos, price_real, net_content, units_sf}) => {
                 <div>
                     {
                         sellos.map((seal) => 
-                            <img className="card__seal-image" key={seal.name} src={seal.image} />
+                            <div key={seal.name}>
+                                <img data-for='soclose' className="card__seal-image" src={seal.image} data-tip={seal.name} />
+                                <ReactTooltip 
+                                    id='soclose' 
+                                    place="right" 
+                                    type="dark" 
+                                    effect="solid"
+                                    backgroundColor="#007580" 
+                                    getContent={(dataTip) => <div><span className="tooltip__detail">Producto</span><br/> {dataTip}</div> 
+                                }/>
+                            </div>
                         )
                     }
                 </div>
@@ -21,7 +33,7 @@ const Card = ({title, image, sellos, price_real, net_content, units_sf}) => {
                 <h1 className="card__title">{title}</h1>
                 <p>${price_real} <span>x {units_sf}unidad</span></p>
             </div>
-            <p className="card__option">Agregar al carrito</p>
+            <button className="card__option" onClick={() => add({title, image, sellos, price_real, net_content, units_sf})}>Agregar al carrito</button>
         </article>
     )
 }
