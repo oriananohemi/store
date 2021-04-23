@@ -25,13 +25,13 @@ const Card = ({title, image, sellos, price_real, net_content, units_sf}, add) =>
                     }
                 </div>
             </div>
-            <div>
+            <div className="card__bottom-section">
                 <div className="card__details-container">
-                    <span>SuperFüds</span>
-                    <span>{net_content}</span>
+                    <span className="details__brand">SuperFüds</span>
+                    <span className="details--burble">{net_content}</span>
                 </div>
                 <h1 className="card__title">{title}</h1>
-                <p>${price_real} <span>x {units_sf}unidad</span></p>
+                <p><b className="details--green">$</b><b>{price_real} </b><span className="details--small">x {units_sf}unids</span></p>
             </div>
             <button className="card__option" onClick={() => add({title, image, sellos, price_real, net_content, units_sf})}>Agregar al carrito</button>
         </article>
