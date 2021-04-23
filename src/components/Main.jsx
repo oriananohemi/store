@@ -49,7 +49,7 @@ const Main = () => {
     return(
       <>
       <h1 className="title">¡Descubre lo que tenemos para ti!</h1>
-      <div>
+      <div className="flex-container">
         <section className="section">
             <div className="section__title-container">
               <h2>Nuevo en SuperFüds</h2>

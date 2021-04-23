@@ -1,6 +1,7 @@
 .cart {
     background-color: var(--white-color);
     border: 1px solid var(--shadow-color);
+    min-height: 400px;
 }
 
 .cart__goBack {
@@ -24,4 +25,10 @@
 
 .title {
     font-size: 30px;
+}
+
+.message {
+    font-size: 20px;
+    text-align: center;
+    margin: 30px 0;
 }

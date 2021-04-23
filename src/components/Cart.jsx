@@ -22,15 +22,18 @@ const Cart = ({products, decrement, increment, removeItem, clear}) => {
             </div>
             <div>
                 {
-                    products.map((item) => 
-                        <Item 
-                            key={item.id}
-                            {...item}
-                            decrement={(element) => decrement(element, 'decrement')}
-                            increment={(element) => increment(element, 'increment')}
-                            removeItem={(element) => removeItem(element, 'removeItem')}
-                        />
-                    )
+                    products.lenght > 0 ?
+                        products.map((item) => 
+                            <Item 
+                                key={item.id}
+                                {...item}
+                                decrement={(element) => decrement(element, 'decrement')}
+                                increment={(element) => increment(element, 'increment')}
+                                removeItem={(element) => removeItem(element, 'removeItem')}
+                            />
+                        )
+                    :   
+                        <h2 className="message">Agrega tus productos</h2>
                 }
             </div>
             <div>
@@ -38,7 +41,7 @@ const Cart = ({products, decrement, increment, removeItem, clear}) => {
             </div>
             <div className="flex-container">
                 <button className="button--red" onClick={clear}>Vaciar Carrito</button>
-                <button className="button--green">Confirmar</button>
+                <button className="button--green">Confirmar Compra</button>
             </div>
         </section>
     )
