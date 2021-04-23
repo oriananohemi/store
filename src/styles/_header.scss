@@ -41,6 +41,24 @@
     width: 100%;
   }
   
+  .headerAnimation-enter {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  .headerAnimation-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 350ms, transform 350ms;
+  }
+  .headerAnimation-exit {
+    opacity: 1;
+  }
+  .headerAnimation-exit-active {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 350ms, transform 350ms;
+  }
+
   @media(min-width: 700px) {
     .header {
       grid-template-areas: "header__brand header-subcontainer";
