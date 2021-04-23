@@ -1,0 +1,27 @@
+.cart {
+    background-color: var(--white-color);
+    border: 1px solid var(--shadow-color);
+}
+
+.cart__goBack {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    h2 {
+        font-size: 18px;
+    }
+}
+
+.cart--flex-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.details--color {
+    color: var(--primary-color);
+}
+
+.title {
+    font-size: 30px;
+}
